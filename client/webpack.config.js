@@ -23,7 +23,7 @@ module.exports = () => {
         title: 'MyPWA',
       }),
       new InjectManifest({
-        swSrc: './src/src-sw.js',
+        swSrc: './src-sw.js',
         swDest: './service-worker.js'
       }),
       new WebpackPwaManifest({
