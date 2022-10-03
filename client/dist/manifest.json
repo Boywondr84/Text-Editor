@@ -1,0 +1,41 @@
+{
+  "name": "My Progressive Web App",
+  "short_name": "MyPWA",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "./",
+  "description": "My awesome Progressive Web App!",
+  "background_color": "#ffffff",
+  "module": {
+    "rules": [
+      {
+        "test": {},
+        "type": "asset/resource"
+      },
+      {
+        "test": {},
+        "use": [
+          "style-loader",
+          "css-loader"
+        ]
+      },
+      {
+        "test": {},
+        "exclude": {},
+        "use": {
+          "loader": "babel-loader",
+          "options": {
+            "presets": [
+              [
+                "@babel/preset-env",
+                {
+                  "targets": "defaults"
+                }
+              ]
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
