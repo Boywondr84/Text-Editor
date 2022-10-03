@@ -18,13 +18,52 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
-    ],
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'MyPWA',
+      }),
+      new InjectManifest({
+        swSrc: './src/src-sw.js',
+        swDest: './service-worker.js'
+      }),
+      new WebpackPwaManifest({
+        name: 'My Progressive Web App',
+        short_name: 'MyPWA',
+        description: 'My awesome Progressive Web App!',
+        background_color: '#ffffff',
+        start_url: './',
+        publicPath: './',
+        fingerprints: false,
+        inject: true,
+        crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+        icons: [
+        ],
 
-    module: {
-      rules: [
-        
-      ],
-    },
-  };
+        module: {
+          rules: [
+            {
+              test: /\.(png|svg|jpg|jpeg|gif)$/i,
+              type: 'asset/resource',
+            },
+            {
+              test: /\.css$/i,
+              use: ['style-loader', 'css-loader'],
+            },
+            {
+              test: /\.m?js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: [
+                    ['@babel/preset-env', { targets: "defaults" }]
+                  ]
+                }
+              }
+            }
+          ],
+        },
+      })
+    ]
+  }
 };
