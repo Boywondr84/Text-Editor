@@ -9,6 +9,16 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src-sw.js":
+/*!*******************!*\
+  !*** ./src-sw.js ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const {\n  offlineFallback,\n  warmStrategyCache\n} = __webpack_require__(/*! workbox-recipes */ \"./node_modules/workbox-recipes/index.mjs\");\n\nconst {\n  CacheFirst\n} = __webpack_require__(/*! workbox-strategies */ \"./node_modules/workbox-strategies/index.mjs\");\n\nconst {\n  registerRoute\n} = __webpack_require__(/*! workbox-routing */ \"./node_modules/workbox-routing/index.mjs\");\n\nconst {\n  CacheableResponsePlugin\n} = __webpack_require__(/*! workbox-cacheable-response */ \"./node_modules/workbox-cacheable-response/index.mjs\");\n\nconst {\n  ExpirationPlugin\n} = __webpack_require__(/*! workbox-expiration */ \"./node_modules/workbox-expiration/index.mjs\");\n\nconst {\n  precacheAndRoute\n} = __webpack_require__(/*! workbox-precaching/precacheAndRoute */ \"./node_modules/workbox-precaching/precacheAndRoute.js\");\n\nprecacheAndRoute([{'revision':'4a35c84c58a8a2b05c06f4b3dbc128e2','url':'index.html'},{'revision':'4b0f92bfcebba7a502e176270419ea97','url':'install.bundle.js'},{'revision':'d36754d29f90c7975330f7af8853cd0f','url':'main.bundle.js'}]);\nconst pageCache = new CacheFirst({\n  cacheName: 'page-cache',\n  plugins: [new CacheableResponsePlugin({\n    statuses: [0, 200]\n  }), new ExpirationPlugin({\n    maxAgeSeconds: 30 * 24 * 60 * 60\n  })]\n});\nwarmStrategyCache({\n  urls: ['/index.html', '/'],\n  strategy: pageCache\n});\nregisterRoute(_ref => {\n  let {\n    request\n  } = _ref;\n  return request.mode === 'navigate';\n}, pageCache); // TODO: Implement asset caching\n// const cacheName = 'static-resources';\n// const offlineFallback = ({ request }) => {\n//   console.log(request);\n//   return (\n//     request.destination === 'style' ||\n//     request.destination === 'script'\n//   );\n// };\n\nregisterRoute();\n\n//# sourceURL=webpack://JATE/./src-sw.js?");
+
+/***/ }),
+
 /***/ "./node_modules/workbox-cacheable-response/CacheableResponse.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/workbox-cacheable-response/CacheableResponse.js ***!
@@ -820,16 +830,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"messages\": () => (/* binding */ messages)\n/* harmony export */ });\n/* harmony import */ var workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! workbox-core/_private/logger.js */ \"./node_modules/workbox-core/_private/logger.js\");\n/* harmony import */ var workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! workbox-core/_private/getFriendlyURL.js */ \"./node_modules/workbox-core/_private/getFriendlyURL.js\");\n/* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_version.js */ \"./node_modules/workbox-strategies/_version.js\");\n/* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_version_js__WEBPACK_IMPORTED_MODULE_2__);\n/*\n  Copyright 2018 Google LLC\n\n  Use of this source code is governed by an MIT-style\n  license that can be found in the LICENSE file or at\n  https://opensource.org/licenses/MIT.\n*/\n\n\n\nconst messages = {\n    strategyStart: (strategyName, request) => `Using ${strategyName} to respond to '${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_1__.getFriendlyURL)(request.url)}'`,\n    printFinalResponse: (response) => {\n        if (response) {\n            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.groupCollapsed(`View the final response here.`);\n            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.log(response || '[No response returned]');\n            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.groupEnd();\n        }\n    },\n};\n\n\n//# sourceURL=webpack://JATE/./node_modules/workbox-strategies/utils/messages.js?");
-
-/***/ }),
-
-/***/ "./src-sw.js":
-/*!*******************!*\
-  !*** ./src-sw.js ***!
-  \*******************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const { offlineFallback, warmStrategyCache } = __webpack_require__(/*! workbox-recipes */ \"./node_modules/workbox-recipes/index.mjs\");\nconst { CacheFirst } = __webpack_require__(/*! workbox-strategies */ \"./node_modules/workbox-strategies/index.mjs\");\nconst { registerRoute } = __webpack_require__(/*! workbox-routing */ \"./node_modules/workbox-routing/index.mjs\");\nconst { CacheableResponsePlugin } = __webpack_require__(/*! workbox-cacheable-response */ \"./node_modules/workbox-cacheable-response/index.mjs\");\nconst { ExpirationPlugin } = __webpack_require__(/*! workbox-expiration */ \"./node_modules/workbox-expiration/index.mjs\");\nconst { precacheAndRoute } = __webpack_require__(/*! workbox-precaching/precacheAndRoute */ \"./node_modules/workbox-precaching/precacheAndRoute.js\");\n\nprecacheAndRoute([{'revision':'0fb1678fdf0895ac84679775166c4fe7','url':'index.html'},{'revision':'fd3f7f0b67cf0a2c4e4ef003a09886d1','url':'install.bundle.js'},{'revision':'6646b3d92548e47f6da484120df3d3f1','url':'main.bundle.js'}]);\n\nconst pageCache = new CacheFirst({\n  cacheName: 'page-cache',\n  plugins: [\n    new CacheableResponsePlugin({\n      statuses: [0, 200],\n    }),\n    new ExpirationPlugin({\n      maxAgeSeconds: 30 * 24 * 60 * 60,\n    }),\n  ],\n});\n\nwarmStrategyCache({\n  urls: ['/index.html', '/'],\n  strategy: pageCache,\n});\n\nregisterRoute(({ request }) => request.mode === 'navigate', pageCache);\n\n// TODO: Implement asset caching\n\n// const cacheName = 'static-resources';\n// const offlineFallback = ({ request }) => {\n//   console.log(request);\n//   return (\n//     request.destination === 'style' ||\n//     request.destination === 'script'\n//   );\n// };\n\nregisterRoute();\n\n\n//# sourceURL=webpack://JATE/./src-sw.js?");
 
 /***/ }),
 
