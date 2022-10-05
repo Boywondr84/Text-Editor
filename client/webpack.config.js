@@ -23,16 +23,16 @@ module.exports = () => {
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: './service-worker.js'
+        // entry: path.join(__dirname, '..', 'src-sw.js'),
+        swDest: 'src-sw.js'
       }),
-      // new WorkboxPlugin.GenerateSW(),
       new WebpackPwaManifest({
         name: 'My Progressive Web App',
         short_name: 'MyPWA',
         description: 'My awesome Progressive Web App!',
         background_color: '#ffffff',
-        start_url: './',
-        publicPath: './',
+        start_url: '/',
+        publicPath: '/',
         fingerprints: false,
         inject: true,
         crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
@@ -55,10 +55,6 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
-        },
-        {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
@@ -68,13 +64,12 @@ module.exports = () => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: [
-                ['@babel/preset-env', { targets: "defaults" }]
-              ]
-            }
-          }
-        }
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
+        },
       ],
-    }
+    },
   }
 };
